@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Haruna Kono — Portfolio</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
 
@@ -110,6 +110,22 @@
     </section>
   </main>
 
+  <div id="project-modal" class="modal" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-sheet" role="document">
+      <button class="modal-close" data-close aria-label="Close">&#215;</button>
+      <div class="modal-body"></div>
+    </div>
+  </div>
+
+  <div id="tweaks-panel" class="tweaks" hidden aria-label="Tweaks">
+    <div class="tweaks-hd">
+      <b>Tweaks</b>
+      <button class="tweaks-x" id="tweaks-close" aria-label="Close tweaks">&#215;</button>
+    </div>
+    <div class="tweaks-body"></div>
+  </div>
+
   <footer>
     <div class="footer-inner">
       <span>© 2026 Haruna Kono</span>
@@ -117,6 +133,6 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=4"></script>
 </body>
 </html>
