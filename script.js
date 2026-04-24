@@ -4,6 +4,11 @@ const projects = [
     description: "A one-stop tracker for McDonald's menus across 9 countries (Japan, Germany, Poland, USA, UK, South Korea, India, Canada, France). Browse exclusive items, new launches, and limited-time offers with real official product photos.",
     longDescription: "McWorld is a one-stop tracker for McDonald's menus across 9 countries (Japan, Germany, Poland, USA, UK, South Korea, India, Canada, France). Browse exclusive items, new launches, and limited-time offers — all with real official product photos so you never have to Google each country separately.\n\nBuilt around a filterable country grid, tag-based discovery (new, exclusive, limited), and a detail sheet for each menu item with pricing and availability windows.",
     thumbnails: ["Country picker grid", "Menu item detail", "Limited-time feed"],
+    images: [
+      "McWorld/country picker grid.png",
+      "McWorld/menu item detail.png",
+      "McWorld/limited-time feed.png",
+    ],
     category: "Utility",
     tech: "React",
     date: "April 2026",
@@ -197,13 +202,23 @@ function placeholderBlock(label, klass = '') {
   return `<div class="placeholder-img ${klass}"><span>${escapeHtml(label)}</span></div>`;
 }
 
+function imageBlock(src, label, klass = '') {
+  if (src) return `<img src="${escapeHtml(src)}" alt="${escapeHtml(label)}" class="modal-img ${klass}">`;
+  return placeholderBlock(label, klass);
+}
+
 function openModal(item, isAutomation) {
   if (!tweakState.openOnCardClick) return;
   const tint = categoryHue[item.category] || 'var(--accent-bg)';
   const heroLabel = (item.thumbnails && item.thumbnails[0]) || 'Hero screenshot';
-  const thumbs = (item.thumbnails && item.thumbnails.slice(1).length)
+  const heroSrc   = item.images?.[0] || null;
+  const thumbLabels = (item.thumbnails && item.thumbnails.slice(1).length)
     ? item.thumbnails.slice(1)
     : ['Secondary screen', 'Detail shot', 'Additional view'];
+  const thumbs = thumbLabels.map((label, i) => ({
+    label,
+    src: item.images?.[i + 1] || null,
+  }));
 
   const actions = [];
   if (item.live) actions.push(`<a href="${item.live}" target="_blank" rel="noopener" class="btn-primary">Visit live ↗</a>`);
@@ -219,7 +234,7 @@ function openModal(item, isAutomation) {
 
   modalBody.innerHTML = `
     <div class="modal-hero" style="--ph-tint:${tint}">
-      ${placeholderBlock(heroLabel, 'is-hero')}
+      ${imageBlock(heroSrc, heroLabel, 'is-hero')}
     </div>
     <div class="modal-content">
       <h3 id="modal-title" class="modal-title">${escapeHtml(item.title)}</h3>
@@ -231,7 +246,7 @@ function openModal(item, isAutomation) {
       <div class="modal-desc">${long}</div>
       <span class="modal-section-label">Screens</span>
       <div class="modal-gallery" style="--ph-tint:${tint}">
-        ${thumbs.map(t => placeholderBlock(t)).join('')}
+        ${thumbs.map(t => imageBlock(t.src, t.label)).join('')}
       </div>
       <div class="modal-actions">
         ${actions.join('')}

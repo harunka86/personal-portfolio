@@ -678,6 +678,23 @@ footer {
 
 .placeholder-img.is-hero span { font-size: 0.78rem; }
 
+.modal-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: var(--radius-sm);
+}
+
+.modal-img.is-hero {
+  border-radius: 0;
+}
+
+.modal-gallery .modal-img {
+  aspect-ratio: 4 / 3;
+  height: auto;
+}
+
 body.modal-open { overflow: hidden; }
 
 /* ── Tweaks panel ────────────────────────────────────── */
