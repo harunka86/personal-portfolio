@@ -423,6 +423,45 @@ h2 {
   align-self: flex-start;
 }
 
+.contact-form .btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.contact-success {
+  max-width: 640px;
+  padding: 2.5rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  text-align: center;
+  animation: fadeUp 0.3s ease both;
+}
+
+.success-icon {
+  width: 48px;
+  height: 48px;
+  background: #f0fdf4;
+  color: #16a34a;
+  border-radius: 50%;
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+}
+
+.success-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.success-sub {
+  font-size: 0.875rem;
+  color: var(--text-2);
+}
+
 @media (max-width: 600px) {
   .form-row { grid-template-columns: 1fr; }
 }

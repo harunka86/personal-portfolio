@@ -100,8 +100,13 @@
           <label for="contact-message">Message</label>
           <textarea id="contact-message" name="message" rows="6" placeholder="What's on your mind?" required></textarea>
         </div>
-        <button type="submit" class="btn-primary">Send Message</button>
+        <button type="submit" id="submit-btn" class="btn-primary">Send Message</button>
       </form>
+      <div id="contact-success" class="contact-success" hidden>
+        <div class="success-icon">&#10003;</div>
+        <p class="success-title">Your message has been sent to Haruna!</p>
+        <p class="success-sub">I'll get back to you as soon as possible.</p>
+      </div>
     </section>
   </main>
 

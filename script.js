@@ -157,23 +157,44 @@ document.querySelectorAll('.nav-links a').forEach(a => {
   a.addEventListener('click', () => document.querySelector('.nav-links').classList.remove('open'));
 });
 
-document.getElementById('contact-form').addEventListener('submit', e => {
+document.getElementById('contact-form').addEventListener('submit', async e => {
   e.preventDefault();
-  const form = e.target;
+  const form    = e.target;
   const name    = form.querySelector('#contact-name');
   const email   = form.querySelector('#contact-email');
   const message = form.querySelector('#contact-message');
+  const btn     = document.getElementById('submit-btn');
 
   [name, email, message].forEach(el => el.classList.remove('invalid'));
   let valid = true;
   if (!name.value.trim())    { name.classList.add('invalid');    valid = false; }
-  if (!email.value.trim() || !email.value.includes('@')) { email.classList.add('invalid');   valid = false; }
+  if (!email.value.trim() || !email.value.includes('@')) { email.classList.add('invalid'); valid = false; }
   if (!message.value.trim()) { message.classList.add('invalid'); valid = false; }
   if (!valid) return;
 
-  const subject = encodeURIComponent(`Portfolio contact from ${name.value.trim()}`);
-  const body    = encodeURIComponent(`Name: ${name.value.trim()}\nEmail: ${email.value.trim()}\n\n${message.value.trim()}`);
-  window.location.href = `mailto:harunakono@yahoo.com?subject=${subject}&body=${body}`;
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+
+  try {
+    const res = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form),
+    });
+
+    if (res.ok) {
+      form.hidden = true;
+      document.getElementById('contact-success').hidden = false;
+    } else {
+      btn.disabled = false;
+      btn.textContent = 'Send Message';
+      alert('Something went wrong. Please try again or email harunakono@yahoo.com directly.');
+    }
+  } catch {
+    btn.disabled = false;
+    btn.textContent = 'Send Message';
+    alert('Something went wrong. Please try again or email harunakono@yahoo.com directly.');
+  }
 });
 
 renderProjects();
