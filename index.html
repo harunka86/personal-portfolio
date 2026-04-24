@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Haruna Kono — Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav id="navbar">
+    <div class="nav-inner">
+      <span class="nav-logo">Haruna Kono</span>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#automations">Automations</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="nav-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+    <section id="hero">
+      <p class="hero-eyebrow">Hi, I'm</p>
+      <h1>Haruna Kono</h1>
+      <p class="hero-desc">I build web apps, Chrome extensions, and AI-powered automations — from productivity tools to just-for-fun projects.</p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn-primary">View Projects</a>
+        <a href="#contact" class="btn-secondary">Get in Touch</a>
+      </div>
+    </section>
+
+    <section id="about">
+      <h2>About</h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>I'm an Operations Specialist passionate about resolving challenges and redesigning workflows to enhance efficiency. My experience spans process optimisation, system integration, and operational strategy.</p>
+          <p>Whether it's streamlining team processes, implementing new tools to boost productivity, or tackling complex operational bottlenecks... I enjoy finding practical solutions that make systems run smoother and teams work smarter.</p>
+        </div>
+        <div class="about-skills">
+          <div class="skill-group">
+            <span class="skill-label">Stack</span>
+            <div class="skill-tags">
+              <span class="skill-tag">React</span>
+              <span class="skill-tag">Node.js</span>
+              <span class="skill-tag">JavaScript</span>
+              <span class="skill-tag">HTML / CSS</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <span class="skill-label">Platforms</span>
+            <div class="skill-tags">
+              <span class="skill-tag">Chrome Extensions</span>
+              <span class="skill-tag">Web Apps</span>
+              <span class="skill-tag">AI Automations</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="filter-bar" id="filter-bar">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="Productivity">Productivity</button>
+        <button class="filter-btn" data-filter="Entertainment">Entertainment</button>
+        <button class="filter-btn" data-filter="Utility">Utility</button>
+        <button class="filter-btn" data-filter="Wedding">Wedding</button>
+        <button class="filter-btn" data-filter="Personal">Personal</button>
+      </div>
+      <div class="cards-grid" id="projects-grid"></div>
+    </section>
+
+    <section id="automations">
+      <h2>Automations</h2>
+      <p class="section-subtitle">Scripts and automations that handle repetitive tasks — built with Node.js and AI assistance.</p>
+      <div class="cards-grid" id="automations-grid"></div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p class="contact-text">Have a project idea or just want to say hi? My inbox is open.</p>
+      <form id="contact-form" class="contact-form" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="contact-name">Name</label>
+            <input type="text" id="contact-name" name="name" placeholder="Your name" required>
+          </div>
+          <div class="form-group">
+            <label for="contact-email">Email</label>
+            <input type="email" id="contact-email" name="email" placeholder="your@email.com" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="contact-message">Message</label>
+          <textarea id="contact-message" name="message" rows="6" placeholder="What's on your mind?" required></textarea>
+        </div>
+        <button type="submit" class="btn-primary">Send Message</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span>© 2026 Haruna Kono</span>
+      <span>Built with HTML, CSS & JS</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
